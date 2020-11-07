@@ -24,12 +24,25 @@
             <nav id="nav">
                 <ul>
                     <li>
-                        <a href="index.html"> Inicio </a>
+                        <a href="{% url 'home' %}"> Inicio </a>
                     </li>
                     <li>
-                        <a href="contacto.html">Contacto</a>
+                        <a href="{% url 'contacto' %}">Contacto</a>
+                    
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'logout' %}">Cerrar Sesión</a>
                     </li>
-                    <li><a href="galeria.html">GalerÃ­a</a></li>
+                    <li>
+                        <a href="#">@{{ user.username }}</a>
+                    </li>
+                    
+
+                    {% else %}
+                    <li>
+                        <a href="{% url 'login' %}">iniciar sesion</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </nav>
 
